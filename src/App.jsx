@@ -6,7 +6,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoonIcon from "./assets/icons/moon.svg";
 import SunIcon from "./assets/icons/sun.svg";
 import BaseLayout from "./layout/BaseLayout";
-import { Dashboard, PageNotFound } from "./screens";
+import { Dashboard, PageNotFound} from "./screens";
+import LoginScreen from "./screens/login/loginScreen";
+import SignUpScreen from "./screens/sign/SignUpPage";
+import {UserManagement} from "./screens";
+import Payment from "./screens/payment/PaymentPage";
+import {SettlementPage} from "./screens";
+import {ApiIntegrationPage} from "./screens";
+import {RefundPage} from "./screens";
+import {RevenuePage} from "./screens";
+import { SettingPage } from "./screens";
+
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -24,9 +34,19 @@ function App() {
     <>
       <Router>
         <Routes>
+        <Route path="/login" element={<LoginScreen/>} />
+        <Route path="/signup" element={<SignUpScreen/>} />
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/revenue" element ={<RevenuePage />} />
+            <Route path='/usermanagement' element={<UserManagement />} />
+            <Route path='/payment' element={<Payment />} />
+            <Route path='/settlement' element={<SettlementPage />} />
+            <Route path='/apipage' element={<ApiIntegrationPage />} />
+            <Route path='/refund' element={<RefundPage />}/>
+            <Route path='/setting' element={<SettingPage />} />
             <Route path="*" element={<PageNotFound />} />
+           
           </Route>
         </Routes>
 

@@ -1,0 +1,138 @@
+
+.h1-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 42px;
+    letter-spacing: -2%;
+    text-align: justify;
+    color: #001632;
+    margin-bottom: 20px;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .controls > * {
+    margin-bottom: 10px;
+  }
+  
+  .search-bar {
+    position: relative;
+  }
+  
+  input[type="text"] {
+    padding-left: 80px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    color: #7A8593;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    padding: 40px;
+    background-color: #FFFFFF;
+    margin-top: 24px;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+  }
+  
+  .left-section {
+    flex: 1;
+    margin-bottom: 20px; 
+  }
+  
+  .right-section {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .user-info .question {
+    margin: 5px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    color: #001632;
+  }
+  
+  .user-info .answer {
+    margin: 5px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #4A596D;
+  }
+  
+  .copy-button {
+    width: 160px;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid #0051B7;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-left: 200px;
+    background-color: #FFFFFF;
+    color: #0051B7;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .copy-button:hover {
+    background-color: #0051B7;
+    color: #FFFFFF;
+  }
+  
+  .copy-icon {
+    margin-right: 5px;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .controls {
+      flex-direction: column; 
+      align-items: flex-start; 
+    }
+  
+    input[type="text"] {
+      padding-left: 20px;
+    }
+  
+    .search-icon {
+      left: 10px;
+    }
+  
+    .left-section,
+    .right-section {
+      width: 100%; 
+    }
+  
+    .right-section {
+      text-align: left; 
+     
+    }
+    .copy-button{
+        margin-left: 15px;
+    }
+  }
+  

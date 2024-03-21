@@ -1,70 +1,50 @@
+import React from "react";
 import AreaTableAction from "./AreaTableAction";
 import "./AreaTable.scss";
 
 const TABLE_HEADS = [
-  "Products",
-  "Order ID",
-  "Date",
-  "Customer name",
-  "Status",
+  "S.No",
+  "Invoice Date",
+  "Invoice Period",
   "Amount",
-  "Action",
+  "Payment Status"
 ];
 
 const TABLE_DATA = [
   {
-    id: 100,
-    name: "Iphone 13 Pro",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 400,
+    sno: "1",
+    invoice_date: "01/02/24",
+    invoice_period: "01/02/24 - 01/03/24",
+    amount: "1500",
+    status: "complete"
   },
   {
-    id: 101,
-    name: "Macbook Pro",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "pending",
-    amount: 288,
+    sno: "2",
+    invoice_date: "01/02/24",
+    invoice_period: "01/02/24 - 01/03/24",
+    amount: "1500",
+    status: "complete"
   },
   {
-    id: 102,
-    name: "Apple Watch",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "canceled",
-    amount: 500,
+    sno: "3",
+    invoice_date: "01/02/24",
+    invoice_period: "01/02/24 - 01/03/24",
+    amount: "1500",
+    status: "failed"
   },
   {
-    id: 103,
-    name: "Microsoft Book",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 100,
+    sno: "4",
+    invoice_date: "01/02/24",
+    invoice_period: "01/02/24 - 01/03/24",
+    amount: "1500",
+    status: "complete"
   },
   {
-    id: 104,
-    name: "Apple Pen",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 60,
-  },
-  {
-    id: 105,
-    name: "Airpods",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 80,
+    sno: "5",
+    invoice_date: "01/02/24",
+    invoice_period: "01/02/24 - 01/03/24",
+    amount: "1500",
+    status: "pending"
   },
 ];
 
@@ -78,19 +58,19 @@ const AreaTable = () => {
         <table>
           <thead>
             <tr>
-              {TABLE_HEADS?.map((th, index) => (
+              {TABLE_HEADS.map((th, index) => (
                 <th key={index}>{th}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {TABLE_DATA?.map((dataItem) => {
+            {TABLE_DATA.map((dataItem, index) => {
               return (
-                <tr key={dataItem.id}>
-                  <td>{dataItem.name}</td>
-                  <td>{dataItem.order_id}</td>
-                  <td>{dataItem.date}</td>
-                  <td>{dataItem.customer}</td>
+                <tr key={index}>
+                  <td>{dataItem.sno}</td>
+                  <td>{dataItem.invoice_date}</td>
+                  <td>{dataItem.invoice_period}</td>
+                  <td>{dataItem.amount}</td>
                   <td>
                     <div className="dt-status">
                       <span
@@ -99,7 +79,6 @@ const AreaTable = () => {
                       <span className="dt-status-text">{dataItem.status}</span>
                     </div>
                   </td>
-                  <td>${dataItem.amount.toFixed(2)}</td>
                   <td className="dt-cell-action">
                     <AreaTableAction />
                   </td>

@@ -1,0 +1,67 @@
+/* Update the CSS to style the controls */
+.h1-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: -2%;
+  text-align: justify;
+  color: #001632;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.controls > * {
+  margin-bottom: 10px; /* Add space between controls */
+}
+
+.search-bar {
+  position: relative;
+}
+
+input[type="text"] {
+  padding-left: 80px;
+  width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #7A8593;
+}
+.search-but{
+  background-color:#0051B7;
+  color: white;
+  ;
+}
+.search-buton{
+  background-color: #FFFFFF;
+  color: #0051B7;
+}
+.export-button{
+  background-color: #FFFFFF;
+  color: #0051B7;
+}
+.search-button,
+.search-but,
+.export-button {
+  height: 44px; 
+  border-radius: 6px;
+  border: 1px solid #7A8593;
+  padding: 11px 24px;
+  margin-left: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+.export-button {
+  margin-right: 20px;
+}

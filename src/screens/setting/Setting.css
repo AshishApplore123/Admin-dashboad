@@ -1,0 +1,279 @@
+.h2-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #7A8593; 
+  cursor: pointer; 
+  margin: 0 10px; 
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+.h2-heading.active {
+  color: #0051B7;
+  border-bottom-color: #0051B7; 
+}
+
+.section-row {
+  display: flex;
+  justify-content: space-around; 
+  margin-top: 20px; 
+}
+
+
+
+.profile-section {
+  margin-top: 30px;
+  width: 100%; 
+}
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.edit-button {
+  color: #0051B7;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.info-content {
+  margin-top: 16px;
+ 
+}
+
+.info-column {
+  flex: 1;
+  margin-right: 60px;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.info-item {
+  margin-right: 20px; 
+  margin-bottom: 20px;
+}
+
+.info-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #4A596D;
+}
+
+.info-value {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #001632;
+}
+
+
+/* Setting.css */
+
+.notification-section {
+  margin-top: 30px;
+}
+
+.notification-item {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #001632;
+}
+
+.notification-item p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #7A8593;
+}
+
+.toggle-button {
+  width: 52px;
+  height: 32px;
+  border-radius: 36px;
+  padding: 4px 6px;
+  background-color: #ACB3BB;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Setting.css */
+
+.payment-section {
+  margin-top: 30px;
+}
+
+.payment-item {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-item:last-child {
+  border-bottom: none;
+}
+
+.payment-item h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #001632;
+}
+
+.payment-item p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #7A8593;
+}
+
+/* Setting.css */
+
+.payment-select {
+  width: 360px;
+  height: 44px;
+  border-radius: 6px;
+  padding: 8px 24px;
+  background-color: #FFFFFF;
+  color: #ACB3BB;
+  border: 1px solid #ACB3BB;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.btn {
+  width: 170px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #ACB3BB;
+  padding: 8px 16px;
+  margin-right: 8px;
+  background-color: #FFFFFF;
+  color: #ACB3BB;
+  cursor: pointer;
+}
+
+.btn:last-child {
+  margin-right: 0; 
+}
+
+
+@media only screen and (max-width: 768px) {
+  .h2-heading {
+    font-size: 14px;
+  }
+.notification-item {
+    padding: 10px 0; 
+  }
+
+  .notification-item h3 {
+    font-size: 14px; 
+  }
+
+  .notification-item p {
+    font-size: 14px;
+  }
+
+  .toggle-button {
+    width: 40px; 
+    height: 24px;
+    padding: 2px 4px; 
+  }
+.payment-item {
+    padding: 10px 0; 
+  }
+
+  .payment-item h3 {
+    font-size: 14px;
+  }
+
+  .payment-item p {
+    font-size: 14px; 
+  }
+
+  .payment-select {
+    width: 280px;
+  }
+
+  .btn {
+    width: 140px;
+  }
+}
+
+/* Media query for mobile devices (480px) */
+@media only screen and (max-width: 480px) {
+  .h2-heading {
+    font-size: 12px; 
+    margin: 0 5px; 
+  }
+.notification-item {
+    padding: 10px 0; 
+  }
+
+  .notification-item h3 {
+    font-size: 12px; 
+  }
+
+  .notification-item p {
+    font-size: 12px;
+  }
+
+  .toggle-button {
+    width: 32px; 
+    height: 20px;
+    padding: 2px 4px; 
+  }
+.payment-item {
+    padding: 10px 0; 
+  }
+
+  .payment-item h3 {
+    font-size: 12px; 
+  }
+
+  .payment-item p {
+    font-size: 12px;
+  }
+
+  .payment-select {
+    width: 240px; 
+  }
+
+  .btn {
+    width: 120px; 
+  }
+}	

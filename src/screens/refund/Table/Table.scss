@@ -40,13 +40,26 @@
       border-collapse: collapse;
       color: var(--text-color-inverted);
 
-      td,
       th {
-        padding: 14px 12px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+        color: #0051B7;
         @media (max-width: 768px) {
           font-size: 15px;
           padding: 12px 10px;
         }
+      }
+
+      td {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.1px;
+        color: #001632;
       }
 
       thead {
@@ -75,20 +88,19 @@
           width: 8px;
           height: 8px;
           border-radius: 100%;
-
-          &.dot-pending {
-            background-color: var(--orange-color);
-          }
-          &.dot-failed {
-            background-color: var(--red-color);
-          }
-          &.dot-complete {
-            background-color: var(--green-color);
-          }
         }
 
         .dt-status-text {
           text-transform: capitalize;
+        }
+
+        /* Color based on status */
+        .dot-active {
+          background-color: var(--green-color);
+        }
+
+        .dot-inactive {
+          background-color: var(--red-color);
         }
       }
     }
@@ -128,4 +140,27 @@
       opacity: 0.9;
     }
   }
+}
+.take-action-button {
+  width: 100px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #0051B7;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #FFFFFF;
+  color: #0051B7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.take-action-button:hover {
+  background-color: #0051B7;
+  color: #FFFFFF;
 }

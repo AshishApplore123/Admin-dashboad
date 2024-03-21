@@ -40,15 +40,27 @@
       border-collapse: collapse;
       color: var(--text-color-inverted);
 
-      td,
+      
       th {
-        padding: 14px 12px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+        color: #0051B7;
         @media (max-width: 768px) {
           font-size: 15px;
           padding: 12px 10px;
         }
       }
-
+      td{
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.1px;
+        color: #001632;
+      }
       thead {
         text-align: left;
         font-size: 17px;
@@ -79,10 +91,10 @@
           &.dot-pending {
             background-color: var(--orange-color);
           }
-          &.dot-failed {
+          &.dot-canceled {
             background-color: var(--red-color);
           }
-          &.dot-complete {
+          &.dot-delivered {
             background-color: var(--green-color);
           }
         }

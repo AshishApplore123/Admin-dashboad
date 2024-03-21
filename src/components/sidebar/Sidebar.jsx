@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { LIGHT_THEME } from "../../constants/themeConstants";
-import LogoBlue from "../../assets/images/logo_blue.svg";
-import LogoWhite from "../../assets/images/logo_white.svg";
+import img from "../../assets/images/img1.png";
 import {
   MdOutlineAttachMoney,
   MdOutlineBarChart,
@@ -15,6 +14,9 @@ import {
   MdOutlineSettings,
   MdOutlineShoppingBag,
 } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+import { FaWallet } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
 import { SidebarContext } from "../../context/SidebarContext";
@@ -49,8 +51,8 @@ const Sidebar = () => {
     >
       <div className="sidebar-top">
         <div className="sidebar-brand">
-          <img src={theme === LIGHT_THEME ? LogoBlue : LogoWhite} alt="" />
-          <span className="sidebar-brand-text">tabernam.</span>
+          <img src={theme === LIGHT_THEME ? img : img} alt="" />
+         
         </div>
         <button className="sidebar-close-btn" onClick={closeSidebar}>
           <MdOutlineClose size={24} />
@@ -68,51 +70,51 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/revenue" className="menu-link">
                 <span className="menu-link-icon">
-                  <MdOutlineBarChart size={20} />
+                  <FaWallet size={20} />
                 </span>
-                <span className="menu-link-text">Statistics</span>
+                <span className="menu-link-text">Revenue</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/usermanagement" className="menu-link">
                 <span className="menu-link-icon">
-                  <MdOutlineAttachMoney size={20} />
+                  <FaUsers size={20} />
                 </span>
-                <span className="menu-link-text">Payment</span>
+                <span className="menu-link-text">User Management</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/payment" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineCurrencyExchange size={18} />
                 </span>
-                <span className="menu-link-text">Transactions</span>
+                <span className="menu-link-text">Payments</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/refund" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
                 </span>
-                <span className="menu-link-text">Products</span>
+                <span className="menu-link-text">Refund & Disputes</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/apipage" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlinePeople size={20} />
                 </span>
-                <span className="menu-link-text">Customer</span>
+                <span className="menu-link-text">Api Integration</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/settlement" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineMessage size={18} />
                 </span>
-                <span className="menu-link-text">Messages</span>
+                <span className="menu-link-text">Settlements</span>
               </Link>
             </li>
           </ul>
@@ -121,7 +123,7 @@ const Sidebar = () => {
         <div className="sidebar-menu sidebar-menu2">
           <ul className="menu-list">
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/setting" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineSettings size={20} />
                 </span>

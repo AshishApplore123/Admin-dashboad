@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import {
   BarChart,
   Bar,
@@ -16,49 +16,53 @@ import "./AreaCharts.scss";
 const data = [
   {
     month: "Jan",
-    loss: 70,
-    profit: 100,
+    earnings: 30, 
   },
   {
     month: "Feb",
-    loss: 55,
-    profit: 85,
+    earnings: 15,
   },
   {
     month: "Mar",
-    loss: 35,
-    profit: 90,
+    earnings: 20,
   },
   {
-    month: "April",
-    loss: 90,
-    profit: 70,
+    month: "Apr",
+    earnings: 25,
   },
   {
     month: "May",
-    loss: 55,
-    profit: 80,
+    earnings: 10,
   },
   {
     month: "Jun",
-    loss: 30,
-    profit: 50,
+    earnings: 5,
   },
   {
     month: "Jul",
-    loss: 32,
-    profit: 75,
+    earnings: 15,
   },
   {
     month: "Aug",
-    loss: 62,
-    profit: 86,
+    earnings: 30,
   },
   {
     month: "Sep",
-    loss: 55,
-    profit: 78,
+    earnings: 30,
   },
+  {
+    month: "Oct",
+    earnings: 30,
+  },
+  {
+    month: "Nov",
+    earnings: 26,
+  },
+  {
+    month: "Dec",
+    earnings: 16,
+  },
+ 
 ];
 
 const AreaBarChart = () => {
@@ -79,13 +83,13 @@ const AreaBarChart = () => {
   return (
     <div className="bar-chart">
       <div className="bar-chart-info">
-        <h5 className="bar-chart-title">Total Revenue</h5>
+        <h5 className="bar-chart-title">Total Earning</h5>
         <div className="chart-info-data">
-          <div className="info-data-value">$50.4K</div>
-          <div className="info-data-text">
+          <div className="info-data-value">₹1500</div>
+          {/* <div className="info-data-text">
             <FaArrowUpLong />
             <p>5% than last month.</p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="bar-chart-wrapper">
@@ -133,16 +137,8 @@ const AreaBarChart = () => {
               formatter={formatLegendValue}
             />
             <Bar
-              dataKey="profit"
+              dataKey="earnings"
               fill="#475be8"
-              activeBar={false}
-              isAnimationActive={false}
-              barSize={24}
-              radius={[4, 4, 4, 4]}
-            />
-            <Bar
-              dataKey="loss"
-              fill="#e3e7fc"
               activeBar={false}
               isAnimationActive={false}
               barSize={24}
