@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Table from "./Table/Table";
 import "./Settlement.css";
+import { SidebarContext } from "../../context/SidebarContext";
+import { MdOutlineMenu } from "react-icons/md";
 
 
 const SettlementPage = () => {
@@ -22,10 +24,20 @@ const SettlementPage = () => {
   const handleExportExcel = () => {
     // Implement export to Excel functionality here
   };
-
+  const { openSidebar } = useContext(SidebarContext);
   return (
     <div className="content-area">
-      <h1 className="h1-heading">Settlements</h1>
+      <div className="area-top-l">
+        <button
+          className="sidebar-open-btn"
+          type="button"
+          onClick={openSidebar}
+        >
+          <MdOutlineMenu size={24} />
+        </button>
+        <h1 className="h1-heading">Settlements</h1>
+      </div>
+      
       <div className="controls">
         <div className="search-bar">
           <input

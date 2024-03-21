@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Table from "./Table/Table";
 import "./UserManagement.css";
 import { FaSearch } from 'react-icons/fa';
+import { SidebarContext } from "../../context/SidebarContext";
+import { MdOutlineMenu } from "react-icons/md";
 
 const UserManagement = () => {
   const [selectedStatus, setSelectedStatus] = useState("All");
@@ -14,11 +16,21 @@ const UserManagement = () => {
   const handleSearch = (event) => {
     setSearchQuery(event.target.value); 
   };
-
+  const { openSidebar } = useContext(SidebarContext);
   return (
     <div className="content-area">
-      <div>
+      <div className="area-top-l">
+        <button
+          className="sidebar-open-btn"
+          type="button"
+          onClick={openSidebar}
+        >
+          <MdOutlineMenu size={24} />
+        </button>
         <h1 className="h1-heading">User Management</h1>
+      </div>
+      <div>
+        
         <div className="search-bar">
           <input
             type="text"

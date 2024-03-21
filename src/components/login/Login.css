@@ -1,98 +1,125 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0051B7;
+}
+
+.right-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 300px;
+  padding: 20px;
+}
+
+.login-form h2 {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: Plus Jakarta Sans, sans-serif;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  color: #4A596D;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Plus Jakarta Sans, sans-serif;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 20px);
+  margin-bottom: 16px;
+  margin-top: 16px;
+  padding: 10px;
+  border: 1px solid #ACB3BB;
+  border-radius: 6px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0051B7;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Plus Jakarta Sans, sans-serif;
+  cursor: pointer;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: Plus Jakarta Sans, sans-serif;
+  font-size: 16px;
+  color: #0051B7;
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-family: Plus Jakarta Sans, sans-serif;
+  font-weight: 400;
+}
+
+.signup-link a {
+  color: #0051B7;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
   .container {
-    display: flex;
-    height: 100vh;
-    
+      flex-direction: column;
   }
-  
-  .left-column {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0051B7;
+  .left-column, .right-column {
+      flex: 1;
+      padding: 20px;
   }
-  
-  .right-column {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   .login-form {
-    width: 300px;
-    padding: 20px;
-    /* background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); */
+      width: 100%;
+      max-width: 400px;
   }
-  .login-form h2{
-    font-size: 32px;
-    font-weight: 700;
-    font-family: Plus Jakarta Sans !important;
-    margin-bottom: 20px;
+}
+@media (max-width: 480px) {
+  .container {
+      flex-direction: column;
   }
-  .login-form label{
-    color: #4A596D;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: Plus Jakarta Sans !important;
+  .left-column, .right-column {
+      flex: 1;
+      padding: 20px;
   }
-  input[type="text"],
-  input[type="password"] {
-    width: calc(100% - 20px);
-    opacity: 80%;
-    margin-bottom: 16px;
-    margin-top: 16px;
-    padding: 10px;
-    border: 1px solid #ACB3BB;
-    border-radius: 6px;
+  .login-form {
+      width: 100%;
+      max-width: 300px;
   }
-  
-  input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #0051B7; /* Green */
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: Plus Jakarta Sans !important;
-    cursor: pointer;
-  }
-  .forgot-password{
-    text-align: right;
-    margin-bottom: 10px;
-  }
-  .forgot-password a{
-    margin-top: 10px;
-    text-decoration: none;
-    font-weight: 500;
-    font-family: Plus Jakarta Sans !important;
-    font-size: 16px;
-    color: #0051B7;
-  }
-  
-  .signup-link {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Plus Jakarta Sans !important;
-    font-weight: 400;
-  }
-  
-  .signup-link a {
-    color: #0051B7; 
-    text-decoration: none;
-  }
-  
-  .signup-link a:hover {
-    text-decoration: underline;
-  }
+}

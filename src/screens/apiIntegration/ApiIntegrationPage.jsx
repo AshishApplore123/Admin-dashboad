@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./ApiIntegration.css";
 import { FaSearch, FaCopy } from 'react-icons/fa';
+import { SidebarContext } from "../../context/SidebarContext";
+import { MdOutlineMenu } from "react-icons/md";
 
 const ApiIntegrationPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -8,11 +11,21 @@ const ApiIntegrationPage = () => {
   const handleSearch = (event) => {
     setSearchQuery(event.target.value.toLowerCase()); 
   };
-
+  const { openSidebar } = useContext(SidebarContext);
   return (
     <div className="content-area">
-      <div>
+      <div className="area-top-l">
+        <button
+          className="sidebar-open-btn"
+          type="button"
+          onClick={openSidebar}
+        >
+          <MdOutlineMenu size={24} />
+        </button>
         <h1 className="h1-heading">API Integration</h1>
+      </div>
+      <div>
+
         <div className="search-bar">
           <input
             type="text"
