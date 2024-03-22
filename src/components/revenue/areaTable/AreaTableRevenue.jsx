@@ -1,6 +1,6 @@
 import React from "react";
-import AreaTableAction from "./AreaTableAction";
-import "./AreaTable.scss";
+import AreaTableAction from "./AreaTableActionRevenue";
+import "./AreaTableRevenue.scss";
 import { FaSearch } from 'react-icons/fa';
 
 const TABLE_HEADS = [
@@ -49,7 +49,7 @@ const TABLE_DATA = [
   },
 ];
 
-const AreaTable = () => {
+const AreaTableRevenue = () => {
   return (
     <section className="content-area-table">
       <div className="data-table-info">
@@ -104,4 +104,4 @@ const AreaTable = () => {
   );
 };
 
-export default AreaTable;
+export default AreaTableRevenue;

@@ -1,0 +1,46 @@
+.progress-chart-container {
+    display: flex;
+    flex-direction: column; /* Display cards in a single column */
+    gap: 24px; /* Add gap between cards */
+  }
+  
+  .progress-chart-card {
+    width: 309px;
+    height: 162px;
+    border-radius: 12px;
+    padding: 24px 32px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a card-like appearance */
+  }
+  
+  .card-title {
+    margin-bottom: 16px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 2%;
+    color: #001632;
+  }
+  
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .card-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .item-name {
+    font-size: 16px;
+  }
+  
+  .item-value {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
