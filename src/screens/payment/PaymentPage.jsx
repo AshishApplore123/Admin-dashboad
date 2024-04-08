@@ -46,14 +46,10 @@ const PaymentPage = () => {
       const data = await response.json();
       setTableData(data.data); 
 
-      // Extract date and time from fetched data and set it to currentDateAndTime
-      if (data && data.data.length > 0) {
-        const firstDataItem = data.data[0]; // Assuming date and time is in the first data item
-        const dateTime = new Date(firstDataItem.createdAt);
-        setCurrentDateAndTime(
-          `${dateTime.toLocaleDateString("en-GB", { weekday: "short" })} ${dateTime.getDate()} ${dateTime.toLocaleDateString("en-GB", { month: "long" })} ${dateTime.getFullYear()}, ${dateTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`
-        );
-      }
+      const dateTime = new Date();
+      setCurrentDateAndTime(
+        `${dateTime.toLocaleDateString("en-GB", { weekday: "short" })} ${dateTime.getDate()} ${dateTime.toLocaleDateString("en-GB", { month: "long" })} ${dateTime.getFullYear()}, ${dateTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`
+      );
     } catch (error) {
       setError(error.message);
       console.error("Error fetching data:", error);
@@ -85,7 +81,7 @@ const PaymentPage = () => {
             onChange={handleSearch}
           />
           <FaSearch className="search-icon" />
-          {currentDateAndTime && <span className="date-time">Last Updated At: {currentDateAndTime}</span>}
+          {currentDateAndTime && <span className="date-time">Last updated at: {currentDateAndTime}</span>}
         </div>
       </div>
 
