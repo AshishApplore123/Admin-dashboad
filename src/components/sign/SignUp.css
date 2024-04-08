@@ -103,6 +103,9 @@ input[type="submit"] {
         width: 90%;
         max-width: 400px;
     }
+    .image{
+        width: 400px;
+      }
 }
 
 @media (max-width: 480px) {

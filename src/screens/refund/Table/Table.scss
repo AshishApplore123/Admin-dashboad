@@ -84,10 +84,25 @@
         justify-content: flex-start;
         column-gap: 6px;
 
+        // .dt-status-dot {
+        //   width: 8px;
+        //   height: 8px;
+        //   border-radius: 100%;
+        // }
         .dt-status-dot {
           width: 8px;
           height: 8px;
           border-radius: 100%;
+
+          &.dot-pending {
+            background-color: var(--orange-color);
+          }
+          &.dot-failed {
+            background-color: var(--red-color);
+          }
+          &.dot-completed {
+            background-color: var(--green-color);
+          }
         }
 
         .dt-status-text {

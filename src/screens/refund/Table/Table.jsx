@@ -75,7 +75,15 @@ const Table = () => {
                 <td>
                   <button className="take-action-button"  onClick={() => handleAction(dataItem.dispute_id)}>TakeAction</button>
                 </td>
-                <td>{dataItem.status}</td>
+                {/* <td>{dataItem.status}</td> */}
+                <td>
+                  <div className="dt-status">
+                    <span
+                      className={`dt-status-dot dot-${dataItem.status}`}
+                    ></span>
+                    <span className="dt-status-text">{dataItem.status}</span>
+                  </div>
+                </td>
                 <td className="dt-cell-action">
                   <TableAction />
                 </td>

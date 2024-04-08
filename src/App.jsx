@@ -16,6 +16,7 @@ import {ApiIntegrationPage} from "./screens";
 import {RefundPage} from "./screens";
 import {RevenuePage} from "./screens";
 import { SettingPage } from "./screens";
+import { Navigate } from "react-router-dom";
 
 
 function App() {
@@ -30,27 +31,32 @@ function App() {
     }
   }, [theme]);
 
+  const ProtectedRoute = ({ element, access }) => {
+      const isTokenAvailable = !!localStorage.getItem("token");
+      return isTokenAvailable ? element : <Navigate to="/login" />;
+    };
   return (
     <>
       <Router>
         <Routes>
+        <Route path="/" element={<LoginScreen/>} />
         <Route path="/login" element={<LoginScreen/>} />
         <Route path="/signup" element={<SignUpScreen/>} />
           <Route element={<BaseLayout />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/revenue" element ={<RevenuePage />} />
-            <Route path='/usermanagement' element={<UserManagement />} />
-            <Route path='/payment' element={<Payment />} />
-            <Route path='/settlement' element={<SettlementPage />} />
-            <Route path='/apipage' element={<ApiIntegrationPage />} />
-            <Route path='/refund' element={<RefundPage />}/>
-            <Route path='/setting' element={<SettingPage />} />
-            <Route path="*" element={<PageNotFound />} />
+            <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+            <Route path="/revenue" element={<ProtectedRoute element ={<RevenuePage />} />} />
+            <Route path='/usermanagement' element={<ProtectedRoute element={<UserManagement />} />} />
+            <Route path='/payment' element={<ProtectedRoute element={<Payment />} />} />
+            <Route path='/settlement' element={<ProtectedRoute element={<SettlementPage />} />}/>
+            <Route path='/apipage' element={<ProtectedRoute element={<ApiIntegrationPage />} />}/>
+            <Route path='/refund' element={<ProtectedRoute element={<RefundPage />}/>}/>
+            <Route path='/setting' element={<ProtectedRoute element={<SettingPage />}/>} />
+            <Route path="*" element={<ProtectedRoute element={<PageNotFound />} />}/>
            
           </Route>
         </Routes>
 
-        <button
+        {/* <button
           type="button"
           className="theme-toggle-btn"
           onClick={toggleTheme}
@@ -59,7 +65,7 @@ function App() {
             className="theme-icon"
             src={theme === LIGHT_THEME ? SunIcon : MoonIcon}
           />
-        </button>
+        </button> */}
       </Router>
     </>
   );

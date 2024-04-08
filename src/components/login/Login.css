@@ -98,6 +98,9 @@ input[type="submit"] {
 }
 
 @media (max-width: 768px) {
+  .image{
+    width: 400px;
+  }
   .container {
       flex-direction: column;
   }

@@ -22,7 +22,7 @@ const ApiIntegrationPage = () => {
         >
           <MdOutlineMenu size={24} />
         </button>
-        <h1 className="h1-heading">API Integration</h1>
+        <h2 className="area-top-title">API Integration</h2>
       </div>
       <div>
 

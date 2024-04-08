@@ -18,11 +18,11 @@ const SettlementPage = () => {
   };
 
   const handleReset = () => {
-    setSearchQuery(""); // Reset the search query
+    setSearchQuery(""); 
   };
 
   const handleExportExcel = () => {
-    // Implement export to Excel functionality here
+    
   };
   const { openSidebar } = useContext(SidebarContext);
   return (
@@ -35,7 +35,7 @@ const SettlementPage = () => {
         >
           <MdOutlineMenu size={24} />
         </button>
-        <h1 className="h1-heading">Settlements</h1>
+        <h2 className="area-top-title">Settlements</h2>
       </div>
       
       <div className="controls">

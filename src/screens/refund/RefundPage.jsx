@@ -9,7 +9,7 @@ const RefundPage = () => {
   const { openSidebar } = useContext(SidebarContext);
   return (
     <div className="content-area">
-      <div className="area-top-l">
+     <div className="area-top-l">
         <button
           className="sidebar-open-btn"
           type="button"
@@ -17,9 +17,7 @@ const RefundPage = () => {
         >
           <MdOutlineMenu size={24} />
         </button>
-        <div className="header">
-        <h1 className="h1-heading">Refund & Disputes</h1>
-      </div>
+        <h2 className="area-top-title">Refund & Disputes</h2>
       </div>
       
       <div className="button-search-container">

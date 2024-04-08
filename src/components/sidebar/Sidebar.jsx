@@ -17,11 +17,12 @@ import {
 import { FaUsers } from "react-icons/fa";
 import { FaWallet } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Sidebar.scss";
 import { SidebarContext } from "../../context/SidebarContext";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
@@ -44,6 +45,12 @@ const Sidebar = () => {
     };
   }, []);
 
+  const logout =()=>{
+    
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
+
   return (
     <nav
       className={`sidebar ${isSidebarOpen ? "sidebar-show" : ""}`}
@@ -62,14 +69,14 @@ const Sidebar = () => {
         <div className="sidebar-menu">
           <ul className="menu-list">
             <li className="menu-item">
-              <Link to="/" className="menu-link active">
+              {/* <Link to="/dashboard" className="menu-link active">
                 <span className="menu-link-icon">
                   <MdOutlineGridView size={18} />
                 </span>
                 <span className="menu-link-text">Dashboard</span>
-              </Link>
+              </Link> */}
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/revenue" className="menu-link">
                 <span className="menu-link-icon">
                   <FaWallet size={20} />
@@ -84,7 +91,7 @@ const Sidebar = () => {
                 </span>
                 <span className="menu-link-text">User Management</span>
               </Link>
-            </li>
+            </li> */}
             <li className="menu-item">
               <Link to="/payment" className="menu-link">
                 <span className="menu-link-icon">
@@ -93,7 +100,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Payments</span>
               </Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/refund" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
@@ -116,27 +123,25 @@ const Sidebar = () => {
                 </span>
                 <span className="menu-link-text">Settlements</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
 
         <div className="sidebar-menu sidebar-menu2">
           <ul className="menu-list">
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/setting" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineSettings size={20} />
                 </span>
                 <span className="menu-link-text">Settings</span>
               </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
+            </li> */}
+            <li className="menu-item" onClick={logout}>
+            <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>
                 <span className="menu-link-text">Logout</span>
-              </Link>
             </li>
           </ul>
         </div>

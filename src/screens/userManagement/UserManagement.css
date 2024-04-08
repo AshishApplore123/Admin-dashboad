@@ -55,4 +55,10 @@
     color: #7A8593;
 
   }
+  @media (max-width: 768px) {
+    .search-icon{
+      visibility: hidden;
+     
+    }
+  }
   

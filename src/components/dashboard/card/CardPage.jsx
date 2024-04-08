@@ -1,8 +1,7 @@
 import React from "react";
-import "./Card.scss"; // Import CSS file for styling
+import "./Card.scss"; 
 
 const CardPage = ({ heading, amount, value }) => {
-  // Determine if the value has risen or fallen
   const isRising = value > 0;
 
   return (

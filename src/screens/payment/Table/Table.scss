@@ -91,10 +91,10 @@
           &.dot-pending {
             background-color: var(--orange-color);
           }
-          &.dot-canceled {
+          &.dot-failed {
             background-color: var(--red-color);
           }
-          &.dot-delivered {
+          &.dot-completed {
             background-color: var(--green-color);
           }
         }

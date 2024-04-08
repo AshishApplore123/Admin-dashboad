@@ -1,84 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AreaTableAction from "./TableAction";
 import "./Table.scss";
 
 const TABLE_HEADS = [
   "Serial No",
-  "Transaction ID",
-  "Name",
-  "Email ID",
-  "Payment Date",
-  "Payment Amount",
-  "Payment Type",
-  "Payment Status"
+  "Reference ID",
+  "Sender Name",
+  "Sender VPA",
+  "Receiver VPA",
+  "Amount",
+  "Status",
+  "Transaction Date"
 ];
-const TABLE_DATA = [
-  {
-    sno: "1",
-    transaction_id: "123456789",
-    name: "John Doe",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "completed"
-  },
-  {
-    sno: "2",
-    transaction_id: "123456789",
-    name: "John Doe",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "pending"
-  },
-  {
-    sno: "3",
-    transaction_id: "123456789",
-    name: "John Doe",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "failed"
-  },
-  {
-    sno: "4",
-    transaction_id: "123456789",
-    name: "John Doe",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "completed"
-  },
-  {
-    sno: "5",
-    transaction_id: "123456789",
-    name: "John Doe",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "pending"
-  },
-  {
-    sno: "6",
-    transaction_id: "123456789",
-    name: "Ashish",
-    email_id: "john@gmail.com",
-    payment_date: "01Feb,2024",
-    payment_amount: "15000",
-    payment_type: "NEFT",
-    payment_status: "failed"
-  },
-];
-const Table = ({ searchQuery, selectedStatus }) => {
+
+const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
+  const [tableData, setTableData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      let token = localStorage.getItem('token');
+      const response = await fetch("https://pg-wrapper.applore.in/v1/admin/transactions", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error("Unauthorized: Please check your authentication credentials.");
+        } else {
+          throw new Error("Failed to fetch data");
+        }
+      }
+
+      const data = await response.json();
+      setTableData(data.data); 
+    } catch (error) {
+      setError(error.message);
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   // Filter data based on selected payment status and search query
-  const filteredData = TABLE_DATA.filter(item => 
-    (selectedStatus === "All" || item.payment_status === selectedStatus) && 
-    (searchQuery === "" || item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+  const filteredData = tableData.filter(
+    item =>
+      (selectedStatus === "All" || item.resposne.data.status === selectedStatus) &&
+      (searchQuery === "" || item.request.sender_name.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -94,23 +70,16 @@ const Table = ({ searchQuery, selectedStatus }) => {
           </thead>
           <tbody>
             {filteredData.map((dataItem, index) => (
-              <tr key={dataItem.sno}>
-                {/* Render table rows based on filtered data */}
+              <tr key={dataItem.id}>
+                
                 <td>{index + 1}</td>
-                <td>{dataItem.transaction_id}</td>
-                <td>{dataItem.name}</td>
-                <td>{dataItem.email_id}</td>
-                <td>{dataItem.payment_date}</td>
-                <td>{dataItem.payment_amount}</td>
-                <td>{dataItem.payment_type}</td>
-                <td>
-                  <div className="dt-status">
-                    <span
-                      className={`dt-status-dot dot-${dataItem.payment_status}`}
-                    ></span>
-                    <span className="dt-status-text">{dataItem.payment_status}</span>
-                  </div>
-                </td>
+                <td>{dataItem.referenceId}</td>
+                <td>{dataItem.request.sender_name}</td>
+                <td>{dataItem.request.sender_vpa}</td>
+                <td>{dataItem.request.receiver_vpa}</td>
+                <td>{dataItem.request.amount}</td>
+                <td>{dataItem.resposne.data.status}</td>
+                <td>{new Date(dataItem.createdAt).toLocaleDateString()}</td>
                 <td className="dt-cell-action">
                   <AreaTableAction />
                 </td>

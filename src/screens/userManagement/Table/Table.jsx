@@ -29,7 +29,7 @@ const TABLE_DATA = [
     joining_date: "01,Feb,2024",
     email_id: "john@gmail.com",
     phone_no: "9999999999",
-    status: "Inactive"
+    status: "inactive"
   },
   {
     sno: "3",
@@ -47,7 +47,7 @@ const TABLE_DATA = [
     joining_date: "01,Feb,2024",
     email_id: "john@gmail.com",
     phone_no: "9999999999",
-    status: "Inactive"
+    status: "inactive"
   },
   {
     sno: "5",
@@ -56,7 +56,7 @@ const TABLE_DATA = [
     joining_date: "01,Feb,2024",
     email_id: "john@gmail.com",
     phone_no: "9999999999",
-    status: "Inactive"
+    status: "inactive"
   }
 ];
 
@@ -110,3 +110,4 @@ const Table = ({ searchQuery, selectedStatus }) => {
 };
 
 export default Table;
+

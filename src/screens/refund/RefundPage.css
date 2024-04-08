@@ -95,4 +95,8 @@
       margin-top: 10px; 
     }
   }
-  
+  .area-top-l {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }

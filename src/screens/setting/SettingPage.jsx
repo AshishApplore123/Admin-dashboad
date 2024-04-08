@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from "react";
 import './Setting.css'; 
+import { SidebarContext } from "../../context/SidebarContext";
+import { MdOutlineMenu } from "react-icons/md";
 
 const SettingPage = () => {
   const [activeSection, setActiveSection] = useState('profile'); 
- 
+  const { openSidebar } = useContext(SidebarContext);
   return (
     <div className="setting-page">
-      <h1 className="h1-heading">Settings</h1>
+      <div className="content-area">
+     <div className="area-top-l">
+        <button
+          className="sidebar-open-btn"
+          type="button"
+          onClick={openSidebar}
+        >
+          <MdOutlineMenu size={24} />
+        </button>
+        <h2 className="area-top-title">Setting</h2>
+      </div>
+      </div>
 
     
       <div className="section-row">
