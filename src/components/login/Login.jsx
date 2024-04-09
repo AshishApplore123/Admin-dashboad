@@ -5,18 +5,21 @@ import {Link} from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
+import {post} from '../../config/axios';
+
 const Login=()=>{
 const [email,setEmail]=useState();
 const [password,setPassword]=useState();
 const navigate=useNavigate()
 const handleSubmit=(e)=>{
   e.preventDefault()
-  axios.post('https://pg-wrapper.applore.in/v1/admin/auth/login',{email,password})
+  post('v1/admin/auth/login',{email,password})
   .then(result=>{console.log("result",result)
-    if(result.status===201){
+  console.log(result);
+    
       localStorage.setItem('token', result.data.accessToken);
       navigate('/payment')
-    }
+     
     
   })
   .catch(err=>console.log(err))
@@ -32,7 +35,7 @@ const handleSubmit=(e)=>{
           <form onSubmit={handleSubmit} method="post">
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input type="text" id="email" name="email" onChange={(e)=>setEmail(e.target.value)} required />
+              <input type="email" id="email" name="email" onChange={(e)=>setEmail(e.target.value)} required />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>

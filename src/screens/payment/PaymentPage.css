@@ -1,12 +1,11 @@
-.h1-heading {
+.area-top-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 28px;
   line-height: 42px;
   letter-spacing: -2%;
-  text-align: justify;
   color: #001632;
-  margin-bottom: 20px;
+  
 }
 
 .search-button {
@@ -38,22 +37,34 @@
 }
 
 .search-bar {
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Space items evenly */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 input[type="text"] {
-  padding-left: 80px; /* Adjust padding to accommodate the icon */
-  width: 400px;
+  
+    width: 100%;
+    max-width: 400px;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid #ACB3BB;
+    background-color: #FFFFFF;
+    color: #ACB3BB;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -2%;
 }
 
-.search-icon {
+.search-icon1 {
   position: absolute;
   top: 50%;
-  left: 30px;
+  left: 20px;
   transform: translateY(-50%);
   color: #7A8593;
+  margin-left: 30px;
 }
 
 .date-time {
@@ -64,6 +75,9 @@ input[type="text"] {
 }
 @media (max-width: 768px) {
   .payment-status-container {
-    max-width: 100%; /* Full width on mobile */
+    max-width: 100%;
+  }
+  .search-icon1{
+    visibility: hidden;
   }
 }

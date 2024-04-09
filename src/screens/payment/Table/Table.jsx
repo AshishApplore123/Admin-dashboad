@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AreaTableAction from "./TableAction";
 import "./Table.scss";
-
+import {get} from "../../../config/axios";
 const TABLE_HEADS = [
   "Serial No",
   "Reference ID",
@@ -24,22 +24,12 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
   const fetchData = async () => {
     try {
       let token = localStorage.getItem('token');
-      const response = await fetch("https://pg-wrapper.applore.in/v1/admin/transactions", {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      });
+      const response = await get("v1/admin/transactions");
 
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error("Unauthorized: Please check your authentication credentials.");
-        } else {
-          throw new Error("Failed to fetch data");
-        }
-      }
+      
 
-      const data = await response.json();
-      setTableData(data.data); 
+      console.log(response)
+      setTableData(response.data); 
     } catch (error) {
       setError(error.message);
       console.error("Error fetching data:", error);
@@ -50,10 +40,10 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
     return <div>Error: {error}</div>;
   }
 
-  // Filter data based on selected payment status and search query
+
   const filteredData = tableData.filter(
     item =>
-      (selectedStatus === "All" || item.resposne.data.status === selectedStatus) &&
+      (selectedStatus === "All" || item.resposne.data?.status === selectedStatus) &&
       (searchQuery === "" || item.request.sender_name.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
@@ -78,10 +68,10 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
                 <td>{dataItem.request.sender_vpa}</td>
                 <td>{dataItem.request.receiver_vpa}</td>
                 <td>{dataItem.request.amount}</td>
-                <td>{dataItem.resposne.data.status}</td>
+                <td>{dataItem.resposne.data?.status}</td>
                 <td>{new Date(dataItem.createdAt).toLocaleDateString()}</td>
                 <td className="dt-cell-action">
-                  <AreaTableAction />
+                  {/* <AreaTableAction /> */}
                 </td>
               </tr>
             ))}
