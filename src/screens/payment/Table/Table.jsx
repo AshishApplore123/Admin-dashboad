@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AreaTableAction from "./TableAction";
 import "./Table.scss";
-import {get} from "../../../config/axios";
+import { get } from "../../../config/axios";
 const TABLE_HEADS = [
   "Serial No",
   "Reference ID",
@@ -10,7 +10,7 @@ const TABLE_HEADS = [
   "Receiver VPA",
   "Amount",
   "Status",
-  "Transaction Date"
+  "Transaction Date",
 ];
 
 const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
@@ -19,17 +19,17 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [searchQuery]);
 
   const fetchData = async () => {
     try {
-      let token = localStorage.getItem('token');
-      const response = await get("v1/admin/transactions");
+      let token = localStorage.getItem("token");
+      const response = await get("v1/admin/transactions", {
+        query: searchQuery,
+      });
 
-      
-
-      console.log(response)
-      setTableData(response.data); 
+      console.log(response);
+      setTableData(response.data);
     } catch (error) {
       setError(error.message);
       console.error("Error fetching data:", error);
@@ -40,11 +40,14 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
     return <div>Error: {error}</div>;
   }
 
-
   const filteredData = tableData.filter(
-    item =>
-      (selectedStatus === "All" || item.resposne.data?.status === selectedStatus) &&
-      (searchQuery === "" || item.request.sender_name.toLowerCase().includes(searchQuery.toLowerCase()))
+    (item) =>
+      (selectedStatus === "All" ||
+        item.resposne.data?.status === selectedStatus) &&
+      (searchQuery === "" ||
+        item.request.sender_name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -59,9 +62,8 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((dataItem, index) => (
+            {tableData.map((dataItem, index) => (
               <tr key={dataItem.id}>
-                
                 <td>{index + 1}</td>
                 <td>{dataItem.referenceId}</td>
                 <td>{dataItem.request.sender_name}</td>
@@ -70,9 +72,7 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
                 <td>{dataItem.request.amount}</td>
                 <td>{dataItem.resposne.data?.status}</td>
                 <td>{new Date(dataItem.createdAt).toLocaleDateString()}</td>
-                <td className="dt-cell-action">
-                  {/* <AreaTableAction /> */}
-                </td>
+                <td className="dt-cell-action">{/* <AreaTableAction /> */}</td>
               </tr>
             ))}
           </tbody>

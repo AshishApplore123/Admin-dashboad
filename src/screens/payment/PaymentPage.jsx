@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Table from "./Table/Table";
 import "./PaymentPage.css";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 import { SidebarContext } from "../../context/SidebarContext";
 import { MdOutlineMenu } from "react-icons/md";
 import Pagination from "./Pagination";
-import { get } from '../../config/axios';
-import { debounce } from 'lodash';
+import { get } from "../../config/axios";
+import { debounce } from "lodash";
 const PaymentPage = () => {
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,7 +23,7 @@ const PaymentPage = () => {
     setSearchQuery(value);
     try {
       const response = await get("v1/admin/transactions", {
-        query: value
+        query: value,
       });
       const data = response?.data;
       setTableData(data);
@@ -31,19 +31,30 @@ const PaymentPage = () => {
       setError(error.message);
       console.error("Error fetching data:", error);
     }
-  }, 300); // 300ms debounce delay
+  }, 30); // 300ms debounce delay
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [searchQuery]);
+
   const fetchData = async () => {
     try {
-      let token = localStorage.getItem('token');
-      const response = await get("v1/admin/transactions");
+      let token = localStorage.getItem("token");
+      const response = await get("v1/admin/transactions", {
+        query: searchQuery,
+      });
       const data = response.data;
       setTableData(data);
       const dateTime = new Date();
       setCurrentDateAndTime(
-        `${dateTime.toLocaleDateString("en-GB", { weekday: "short" })} ${dateTime.getDate()} ${dateTime.toLocaleDateString("en-GB", { month: "long" })} ${dateTime.getFullYear()}, ${dateTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`
+        `${dateTime.toLocaleDateString("en-GB", {
+          weekday: "short",
+        })} ${dateTime.getDate()} ${dateTime.toLocaleDateString("en-GB", {
+          month: "long",
+        })} ${dateTime.getFullYear()}, ${dateTime.toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}`
       );
     } catch (error) {
       setError(error.message);
@@ -79,10 +90,18 @@ const PaymentPage = () => {
             onChange={(e) => handleSearch(e.target.value)}
           />
           <FaSearch className="search-icon1" />
-          {currentDateAndTime && <span className="date-time">Last updated at: {currentDateAndTime}</span>}
+          {currentDateAndTime && (
+            <span className="date-time">
+              Last updated at: {currentDateAndTime}
+            </span>
+          )}
         </div>
       </div>
-      <Table searchQuery={searchQuery} selectedStatus={selectedStatus} tableData={currentItems} />
+      <Table
+        searchQuery={searchQuery}
+        selectedStatus={selectedStatus}
+        tableData={currentItems}
+      />
       <Pagination
         itemsPerPage={itemsPerPage}
         totalItems={tableData?.length}
