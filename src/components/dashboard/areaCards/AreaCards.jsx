@@ -9,7 +9,7 @@ const AreaCards = () => {
         percentFillValue={80}
         cardInfo={{
           title: "Todays Sales",
-          value: "$20.4K",
+          value: "₹20.4K",
           text: "We have sold 123 items.",
         }}
       />
@@ -18,7 +18,7 @@ const AreaCards = () => {
         percentFillValue={50}
         cardInfo={{
           title: "Todays Revenue",
-          value: "$8.2K",
+          value: "₹8.2K",
           text: "Available to payout",
         }}
       />
@@ -27,7 +27,7 @@ const AreaCards = () => {
         percentFillValue={40}
         cardInfo={{
           title: "In Escrow",
-          value: "$18.2K",
+          value: "₹18.2K",
           text: "Available to payout",
         }}
       />
