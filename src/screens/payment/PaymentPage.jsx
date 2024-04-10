@@ -14,9 +14,13 @@ const PaymentPage = () => {
   const [tableData, setTableData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [paginationInfo, setPaginationInfo] = useState();
+  const [paginationInfo, setPaginationInfo] = useState({
+    count: 0,
+    totalPages: 0,
+  });
   const [error, setError] = useState(null);
   const { openSidebar } = useContext(SidebarContext);
+
   const fetchData = async () => {
     try {
       const response = await get("v1/admin/transactions", {
@@ -24,10 +28,21 @@ const PaymentPage = () => {
         page: currentPage,
         perPage: itemsPerPage,
       });
+
       const responseData = response?.data;
-      const newTableData = [...tableData, ...responseData]; // Concatenate new data with existing tableData
-      setPaginationInfo(response?.meta?.pagination);
-      setTableData(newTableData);
+
+      if (searchQuery.length !== 0) {
+        setTableData(responseData);
+      } else {
+        const newTableData = [...tableData, ...responseData];
+        setTableData(newTableData);
+      }
+
+      setPaginationInfo({
+        count: response?.meta?.pagination?.count,
+        totalPages: response?.meta?.pagination?.totalPages,
+      });
+
       const dateTime = new Date();
       setCurrentDateAndTime(
         `${dateTime.toLocaleDateString("en-GB", {
@@ -44,18 +59,24 @@ const PaymentPage = () => {
       console.error("Error fetching data:", error);
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, [searchQuery, currentPage]); // Include searchQuery as a dependency to refetch data when it changes
+  }, [searchQuery, currentPage]);
+
   const handleSearch = debounce((value) => {
     setSearchQuery(value);
+    setCurrentPage(1);
   }, 30);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = tableData.slice(indexOfFirstItem, indexOfLastItem);
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
