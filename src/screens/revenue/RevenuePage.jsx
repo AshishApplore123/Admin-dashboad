@@ -1,4 +1,9 @@
-import { AreaCards, AreaCardsRevenue, AreaCharts, AreaChartsRevenue, AreaTable, AreaTableRevenue, AreaTop, AreaTopRevenue } from "../../components";
+import {
+  AreaCardsRevenue,
+  AreaChartsRevenue,
+  AreaTableRevenue,
+  AreaTopRevenue,
+} from "../../components";
 
 const RevenuePage = () => {
   return (
@@ -6,7 +11,7 @@ const RevenuePage = () => {
       <AreaTopRevenue />
       <AreaChartsRevenue />
       <AreaCardsRevenue />
-      
+
       <AreaTableRevenue />
     </div>
   );

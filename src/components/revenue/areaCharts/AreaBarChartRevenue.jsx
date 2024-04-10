@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   BarChart,
   Bar,
@@ -8,15 +7,12 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { ThemeContext } from "../../../context/ThemeContext";
-import { FaArrowUpLong } from "react-icons/fa6";
-import { LIGHT_THEME } from "../../../constants/themeConstants";
 import "./AreaChartsRevenue.scss";
 
 const data = [
   {
     month: "Jan",
-    earnings: 30, 
+    earnings: 30,
   },
   {
     month: "Feb",
@@ -62,12 +58,9 @@ const data = [
     month: "Dec",
     earnings: 16,
   },
- 
 ];
 
 const AreaBarChartRevenue = () => {
-  const { theme } = useContext(ThemeContext);
-
   const formatTooltipValue = (value) => {
     return `${value}k`;
   };
@@ -111,7 +104,7 @@ const AreaBarChartRevenue = () => {
               tickSize={0}
               axisLine={false}
               tick={{
-                fill: `${theme === LIGHT_THEME ? "#676767" : "#f3f3f3"}`,
+                fill: "#676767",
                 fontSize: 14,
               }}
             />
@@ -122,7 +115,7 @@ const AreaBarChartRevenue = () => {
               axisLine={false}
               tickSize={0}
               tick={{
-                fill: `${theme === LIGHT_THEME ? "#676767" : "#f3f3f3"}`,
+                fill: "#676767",
               }}
             />
             <Tooltip
