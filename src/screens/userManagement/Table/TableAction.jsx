@@ -36,19 +36,24 @@ const TableAction = () => {
             <ul className="dropdown-menu-list">
               <li className="dropdown-menu-item">
                 <Link to="/view" className="dropdown-menu-link">
-                  View
+                  Update
                 </Link>
               </li>
               <li className="dropdown-menu-item">
                 <Link to="/Dowload" className="dropdown-menu-link">
-                  Download
+                  Disable
                 </Link>
               </li>
-              {/* <li className="dropdown-menu-item">
+              <li className="dropdown-menu-item">
                 <Link to="/view" className="dropdown-menu-link">
-                  Delete
+                  Enable
                 </Link>
-              </li> */}
+              </li>
+              <li className="dropdown-menu-item">
+                <Link to="/view" className="dropdown-menu-link">
+                  Password Reset
+                </Link>
+              </li>
             </ul>
           </div>
         )}

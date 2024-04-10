@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import AreaTableAction from "./TableAction";
 import "./Table.scss";
-import { get } from "../../../config/axios";
 const TABLE_HEADS = [
   "Serial No",
   "Reference ID",
@@ -12,44 +9,8 @@ const TABLE_HEADS = [
   "Status",
   "Transaction Date",
 ];
-
-const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
-  const [tableData, setTableData] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchData();
-  }, [searchQuery]);
-
-  const fetchData = async () => {
-    try {
-      let token = localStorage.getItem("token");
-      const response = await get("v1/admin/transactions", {
-        query: searchQuery,
-      });
-
-      console.log(response);
-      setTableData(response.data);
-    } catch (error) {
-      setError(error.message);
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  const filteredData = tableData.filter(
-    (item) =>
-      (selectedStatus === "All" ||
-        item.resposne.data?.status === selectedStatus) &&
-      (searchQuery === "" ||
-        item.request.sender_name
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase()))
-  );
-
+const Table = ({ tableData, currentPage, itemsPerPage }) => {
+  const startingSerialNumber = (currentPage - 1) * itemsPerPage + 1;
   return (
     <section className="content-area-table">
       <div className="data-table-diagram">
@@ -64,7 +25,7 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
           <tbody>
             {tableData.map((dataItem, index) => (
               <tr key={dataItem.id}>
-                <td>{index + 1}</td>
+                <td>{startingSerialNumber + index}</td>{" "}
                 <td>{dataItem.referenceId}</td>
                 <td>{dataItem.request.sender_name}</td>
                 <td>{dataItem.request.sender_vpa}</td>
@@ -81,5 +42,4 @@ const Table = ({ searchQuery, selectedStatus, currentDateAndTime }) => {
     </section>
   );
 };
-
 export default Table;

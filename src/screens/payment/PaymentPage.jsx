@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Table from "./Table/Table";
 import "./PaymentPage.css";
 import { FaSearch } from "react-icons/fa";
@@ -14,37 +14,20 @@ const PaymentPage = () => {
   const [tableData, setTableData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [paginationInfo, setPaginationInfo] = useState();
   const [error, setError] = useState(null);
   const { openSidebar } = useContext(SidebarContext);
-  const handleStatusClick = (status) => {
-    setSelectedStatus(status);
-  };
-  const handleSearch = debounce(async (value) => {
-    setSearchQuery(value);
-    try {
-      const response = await get("v1/admin/transactions", {
-        query: value,
-      });
-      const data = response?.data;
-      setTableData(data);
-    } catch (error) {
-      setError(error.message);
-      console.error("Error fetching data:", error);
-    }
-  }, 30); // 300ms debounce delay
-
-  useEffect(() => {
-    fetchData();
-  }, [searchQuery]);
-
   const fetchData = async () => {
     try {
-      let token = localStorage.getItem("token");
       const response = await get("v1/admin/transactions", {
         query: searchQuery,
+        page: currentPage,
+        perPage: itemsPerPage,
       });
-      const data = response.data;
-      setTableData(data);
+      const responseData = response?.data;
+      const newTableData = [...tableData, ...responseData]; // Concatenate new data with existing tableData
+      setPaginationInfo(response?.meta?.pagination);
+      setTableData(newTableData);
       const dateTime = new Date();
       setCurrentDateAndTime(
         `${dateTime.toLocaleDateString("en-GB", {
@@ -61,10 +44,18 @@ const PaymentPage = () => {
       console.error("Error fetching data:", error);
     }
   };
+  useEffect(() => {
+    fetchData();
+  }, [searchQuery, currentPage]); // Include searchQuery as a dependency to refetch data when it changes
+  const handleSearch = debounce((value) => {
+    setSearchQuery(value);
+  }, 30);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = tableData?.slice(indexOfFirstItem, indexOfLastItem);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const currentItems = tableData.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -101,10 +92,12 @@ const PaymentPage = () => {
         searchQuery={searchQuery}
         selectedStatus={selectedStatus}
         tableData={currentItems}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
       />
       <Pagination
         itemsPerPage={itemsPerPage}
-        totalItems={tableData?.length}
+        totalItems={paginationInfo?.totalPages}
         paginate={paginate}
         currentPage={currentPage}
       />

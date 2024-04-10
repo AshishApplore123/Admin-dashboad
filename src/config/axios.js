@@ -1,8 +1,10 @@
 import axios from "axios";
-// const API_BASE_URL = process.env.REACT_APP_API_URL;
+// const API_BASE_URL = "http://localhost:9000/";
+const API_BASE_URL = "https://pg-wrapper.applore.in/";
 let token = localStorage.getItem("token");
 const axiosInstance = axios.create({
-  baseURL: "https://pg-wrapper.applore.in/",
+  // baseURL: "https://pg-wrapper.applore.in/",
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

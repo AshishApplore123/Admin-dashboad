@@ -1,64 +1,178 @@
+/* Existing styles */
+
 .h1-heading {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 42px;
-    letter-spacing: -2%;
-    text-align: justify;
-    color: #001632;
-    margin-bottom: 20px;
-  }
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: -2%;
+  text-align: justify;
+  color: #001632;
+  margin-bottom: 20px;
+}
 
-  .search-button {
-    /* width: 400px;  */
-    height: 44px; 
-    border-radius: 6px;
-    border: 1px solid #7A8593; 
-    padding: 11px 24px;
-    margin-top: 10px;
-    background-color: #FFFFFF;
-    color: #7A8593; 
-    text-align: center; 
-    margin-bottom: 20px;
-  }
-  .payment-status-container {
-    width: 1081px; 
-    height: 64px; 
-  }
-  
-  .payment-status-container p {
-    display: inline-block;
-    margin-right: 20px; 
-    font-weight: 500;
-    font-size: 16px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 24px;
-    align-items: center;
-    
-  }
+.search-button {
+  height: 44px; 
+  border-radius: 6px;
+  border: 1px solid #7A8593; 
+  padding: 11px 24px;
+  margin-top: 18px;
+  background-color: #FFFFFF;
+  color: #7A8593; 
+  text-align: center; 
+  margin-bottom: 20px;
+}
 
+.user-status-container {
+  width: 1081px; 
+  height: 64px; 
+}
 
-  .search-bar {
-    position: relative;
-  }
-  
-  input[type="text"] {
-    padding-left: 80px;
-    width: 400px;
-  }
-  
+.user-status-container p {
+  padding-top: 30px;
+  display: inline-block;
+  margin-right: 20px; 
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 24px;
+  align-items: center;  
+}
+
+.search-bar {
+  position: relative;
+}
+
+input[type="text1"] {
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #ACB3BB;
+  background-color: #FFFFFF;
+  color: #ACB3BB;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -2%;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #7A8593;
+  margin-left: 30px;
+}
+
+@media (max-width: 768px) {
   .search-icon {
-    position: absolute;
-    top: 50%;
-    left: 30px;
-    transform: translateY(-50%);
-    color: #7A8593;
+    visibility: hidden; 
+  }
+}
 
+
+
+.add-button {
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #7A8593;
+  padding: 11px 24px;
+  margin-top: 11px;
+  margin-left: 10px;
+  background-color: #FFFFFF;
+  color: #7A8593;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -2%;
+}
+
+.add-button:hover {
+  background-color: #001632;
+  color: #FFFFFF;
+}
+
+.filter-button {
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #7A8593;
+  padding: 11px 20px;
+  margin-right: 450px;
+  background-color: #FFFFFF;
+  color: #7A8593;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -2%;
+  display: flex;
+  margin-top: 11px;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button:hover {
+  background-color: #F0F0F0;
+  cursor: pointer; 
+}
+
+.filter-button:focus {
+  outline: none; 
+}
+
+.filter-button svg {
+  margin-right: 5px; 
+}
+
+.popover {
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 100px;
+  width: 150px; 
+  background-color: #FFFFFF;
+  border: 1px solid #7A8593;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); 
+  z-index: 999; 
+}
+
+.popover-option {
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #7A8593;
+}
+
+.popover-option:hover {
+  background-color: #F0F0F0; 
+}
+
+@media (max-width: 768px) {
+  .filter-button {
+    margin-right: 10px; 
   }
-  @media (max-width: 768px) {
-    .search-icon{
-      visibility: hidden;
-     
-    }
+  .search-icon {
+    visibility: hidden; 
   }
-  
+  .add-button {
+    margin-top: 8px; 
+    margin-left: 0; 
+    width: 100%; 
+  }
+}
+
+
+@media (min-width: 769px) {
+  .add-button {
+    margin-top: 11px; 
+    margin-left: 10px; 
+    width: auto; 
+  }
+}

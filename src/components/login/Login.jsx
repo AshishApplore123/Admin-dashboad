@@ -6,7 +6,8 @@ import { useState } from 'react';
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import {post} from '../../config/axios';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login=()=>{
 const [email,setEmail]=useState();
 const [password,setPassword]=useState();
@@ -19,10 +20,14 @@ const handleSubmit=(e)=>{
     
       localStorage.setItem('token', result.data.accessToken);
       navigate('/payment')
+      toast.success("Login successful!", { autoClose: 5000 });
      
     
   })
-  .catch(err=>console.log(err))
+  .catch((err) => {
+    console.log(err);
+    toast.error("Login failed. Please check your credentials.", { autoClose: 5000 });
+  });
 }
     return(
         <div className="container">

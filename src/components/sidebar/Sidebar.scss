@@ -91,6 +91,13 @@
     &:hover{
         opacity: 0.8;
     }
+    @media(max-width: 1200px){
+      display: inline-flex;
+  }
+
+  &:hover{
+      opacity: 0.8;
+  }
   }
 
   .menu-item{
@@ -160,7 +167,7 @@
     line-height: 24px;
     
     @media(max-width: 1200px){
-        // display: none;
+      display: none;
     }
     @media(max-width: 768px){
         display: inline-block;
