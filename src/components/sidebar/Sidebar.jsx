@@ -3,26 +3,24 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { LIGHT_THEME } from "../../constants/themeConstants";
 import img from "../../assets/images/img1.png";
 import {
-  MdOutlineAttachMoney,
-  MdOutlineBarChart,
   MdOutlineClose,
   MdOutlineCurrencyExchange,
   MdOutlineGridView,
   MdOutlineLogout,
   MdOutlineMessage,
   MdOutlinePeople,
-  MdOutlineSettings,
   MdOutlineShoppingBag,
 } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { FaWallet } from "react-icons/fa";
 
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Sidebar.scss";
 import { SidebarContext } from "../../context/SidebarContext";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
@@ -45,11 +43,10 @@ const Sidebar = () => {
     };
   }, []);
 
-  const logout =()=>{
-    
-    localStorage.removeItem('token')
-    navigate('/login')
-  }
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <nav
@@ -59,7 +56,6 @@ const Sidebar = () => {
       <div className="sidebar-top">
         <div className="sidebar-brand">
           <img src={theme === LIGHT_THEME ? img : img} alt="" />
-         
         </div>
         <button className="sidebar-close-btn" onClick={closeSidebar}>
           <MdOutlineClose size={24} />
@@ -69,7 +65,12 @@ const Sidebar = () => {
         <div className="sidebar-menu">
           <ul className="menu-list">
             <li className="menu-item">
-              <Link to="/dashboard" className="menu-link active">
+              <Link
+                to="/dashboard"
+                className={`menu-link ${
+                  pathname === "/dashboard" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <MdOutlineGridView size={18} />
                 </span>
@@ -77,7 +78,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/revenue" className="menu-link">
+              <Link
+                to="/revenue"
+                className={`menu-link ${
+                  pathname === "/revenue" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <FaWallet size={20} />
                 </span>
@@ -85,7 +91,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/usermanagement" className="menu-link">
+              <Link
+                to="/usermanagement"
+                className={`menu-link ${
+                  pathname === "/usermanagement" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <FaUsers size={20} />
                 </span>
@@ -93,7 +104,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/payment" className="menu-link">
+              <Link
+                to="/payment"
+                className={`menu-link ${
+                  pathname === "/payment" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <MdOutlineCurrencyExchange size={18} />
                 </span>
@@ -101,7 +117,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/refund" className="menu-link">
+              <Link
+                to="/refund"
+                className={`menu-link ${
+                  pathname === "/refund" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
                 </span>
@@ -109,7 +130,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/apipage" className="menu-link">
+              <Link
+                to="/apipage"
+                className={`menu-link ${
+                  pathname === "/apipage" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <MdOutlinePeople size={20} />
                 </span>
@@ -117,7 +143,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/settlement" className="menu-link">
+              <Link
+                to="/settlement"
+                className={`menu-link ${
+                  pathname === "/settlement" ? "active" : ""
+                }`}
+              >
                 <span className="menu-link-icon">
                   <MdOutlineMessage size={18} />
                 </span>
@@ -138,10 +169,10 @@ const Sidebar = () => {
               </Link>
             </li> */}
             <li className="menu-item" onClick={logout}>
-            <span className="menu-link-icon">
-                  <MdOutlineLogout size={20} />
-                </span>
-                <span className="menu-link-text">Logout</span>
+              <span className="menu-link-icon">
+                <MdOutlineLogout size={20} />
+              </span>
+              <span className="menu-link-text">Logout</span>
             </li>
           </ul>
         </div>
