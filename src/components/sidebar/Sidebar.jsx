@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { LIGHT_THEME } from "../../constants/themeConstants";
 import img from "../../assets/images/img1.png";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   MdOutlineAttachMoney,
   MdOutlineBarChart,
@@ -29,7 +29,6 @@ const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
 
- 
   const handleClickOutside = (event) => {
     if (
       navbarRef.current &&
@@ -48,11 +47,10 @@ const Sidebar = () => {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
+    localStorage.removeItem("token");
+    navigate("/login");
     toast.success("Logged out successfully!");
   };
-
 
   return (
     <nav
@@ -62,7 +60,6 @@ const Sidebar = () => {
       <div className="sidebar-top">
         <div className="sidebar-brand">
           <img src={theme === LIGHT_THEME ? img : img} alt="" />
-         
         </div>
         <button className="sidebar-close-btn" onClick={closeSidebar}>
           <MdOutlineClose size={24} />
@@ -103,14 +100,14 @@ const Sidebar = () => {
                 <span className="menu-link-text">Payments</span>
               </Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/refund" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
                 </span>
                 <span className="menu-link-text">Refund & Disputes</span>
               </Link>
-            </li>
+            </li> */}
             <li className="menu-item">
               <Link to="/apipage" className="menu-link">
                 <span className="menu-link-icon">
@@ -119,14 +116,14 @@ const Sidebar = () => {
                 <span className="menu-link-text">Api Integration</span>
               </Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/settlement" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineMessage size={18} />
                 </span>
                 <span className="menu-link-text">Settlements</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -141,10 +138,10 @@ const Sidebar = () => {
               </Link>
             </li> */}
             <li className="menu-item" onClick={logout}>
-            <span className="menu-link-icon">
-                  <MdOutlineLogout size={20} />
-                </span>
-                <span className="menu-link-text">Logout</span>
+              <span className="menu-link-icon">
+                <MdOutlineLogout size={20} />
+              </span>
+              <span className="menu-link-text">Logout</span>
             </li>
           </ul>
         </div>
