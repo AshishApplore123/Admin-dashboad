@@ -12,6 +12,13 @@
     grid-template-columns: 100%;
   }
 
+  // .card-container {
+  //   display: flex;
+  //   justify-content: center; /* Center the card horizontally */
+  //   align-items: center; /* Center the card vertically */
+  //   grid-column: span 3; /* Make the CardPage span all grid columns */
+  // }
+
   .area-card {
     background-color: var(--secondary-color);
     display: flex;

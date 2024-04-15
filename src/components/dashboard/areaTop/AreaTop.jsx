@@ -7,7 +7,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { addDays } from "date-fns";
 import { DateRange } from "react-date-range";
 
-const AreaTop = () => {
+const AreaTop = ({ fetchDashBoardData }) => {
   const { openSidebar } = useContext(SidebarContext);
 
   const [state, setState] = useState([
@@ -17,6 +17,8 @@ const AreaTop = () => {
       key: "selection",
     },
   ]);
+
+  // console.log(">>", state);
 
   const [showDatePicker, setShowDatePicker] = useState(false);
   const dateRangeRef = useRef(null);
@@ -29,6 +31,26 @@ const AreaTop = () => {
     if (dateRangeRef.current && !dateRangeRef.current.contains(event.target)) {
       setShowDatePicker(false);
     }
+  };
+
+  const filterFromDateHandler = (item) => {
+    console.log("Selected date range:", item.selection);
+
+    setState([item.selection]);
+
+    const startDate = new Date(item.selection.startDate).toLocaleString(
+      "en-US",
+      { timeZone: "Asia/Kolkata", hour12: false }
+    );
+    const endDate = new Date(item.selection.endDate).toLocaleString("en-US", {
+      timeZone: "Asia/Kolkata",
+      hour12: false,
+    });
+
+    console.log("START DATE", startDate);
+    console.log("END DATE", endDate);
+
+    fetchDashBoardData(startDate, endDate);
   };
 
   useEffect(() => {
@@ -60,7 +82,8 @@ const AreaTop = () => {
         >
           <DateRange
             editableDateInputs={true}
-            onChange={(item) => setState([item.selection])}
+            onChange={(item) => filterFromDateHandler(item)}
+            // onChange={(item) => setState([item.selection])}
             moveRangeOnFirstSelection={false}
             ranges={state}
             showMonthAndYearPickers={false}

@@ -3,16 +3,17 @@
 }
 
 .card {
-  width: 242px;
-  height: 120px;
+  width: 120px; /* Adjust width */
+  height: 120px; /* Match width to make it square */
   border-radius: 12px;
   padding: 16px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin-right: 16px; /* Add margin between cards */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
 .card:last-child {
@@ -25,15 +26,14 @@
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -2%;
- 
-  color: #7A8593; /* Adjust color based on Figma specification */
+  color: #7a8593; /* Adjust color based on Figma specification */
   margin-bottom: 4px;
 }
 
 .amount-value {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 16px; /* Adjust top margin */
 }
 
 .amount {
@@ -48,5 +48,5 @@
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 12px;
   line-height: 18px;
-  color: #2EC4B6; /* Change color based on rise or fall */
+  color: #2ec4b6; /* Change color based on rise or fall */
 }

@@ -1,18 +1,49 @@
+import { useEffect, useState } from "react";
 import {
   AreaCardsRevenue,
+  AreaCharts,
   AreaChartsRevenue,
   AreaTableRevenue,
   AreaTopRevenue,
 } from "../../components";
+import { get } from "../../config/axios";
 
 const RevenuePage = () => {
+  const [transactions, setTransactions] = useState({});
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [totalEarnings, setTotalEarnings] = useState(0);
+  const [transactionsByMonth, setTransactionsByMonth] = useState([]);
+
+  const fetchDashboardData = async (startDate, endDate) => {
+    const data = await get("/v1/admin/users/dashboard", {
+      startDate,
+      endDate,
+    });
+
+    setTransactions(data?.transactions);
+    setTotalUsers(data?.totalUsers);
+    setTotalEarnings(data?.totalEarnings);
+    setTransactionsByMonth(data?.transactionsByMonth);
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
   return (
     <div className="content-area">
       <AreaTopRevenue />
-      <AreaChartsRevenue />
-      <AreaCardsRevenue />
+      {/* <AreaChartsRevenue /> */}
+      <AreaCharts
+        fromRevenue={true}
+        transactions={transactions}
+        totalEarnings={totalEarnings}
+        transactionsByMonth={transactionsByMonth}
+      />
 
-      <AreaTableRevenue />
+      {/* <AreaCardsRevenue /> */}
+
+      {/* <AreaTableRevenue /> */}
     </div>
   );
 };

@@ -60,13 +60,13 @@ const data = [
   },
 ];
 
-const AreaBarChart = () => {
+const AreaBarChart = ({ totalEarnings, transactionsByMonth }) => {
   const formatTooltipValue = (value) => {
-    return `${value}k`;
+    return `${value}`;
   };
 
   const formatYAxisLabel = (value) => {
-    return `${value}k`;
+    return `${value}`;
   };
 
   const formatLegendValue = (value) => {
@@ -78,11 +78,7 @@ const AreaBarChart = () => {
       <div className="bar-chart-info">
         <h5 className="bar-chart-title">Total Earning</h5>
         <div className="chart-info-data">
-          <div className="info-data-value">₹1500</div>
-          {/* <div className="info-data-text">
-            <FaArrowUpLong />
-            <p>5% than last month.</p>
-          </div> */}
+          <div className="info-data-value">₹{totalEarnings}</div>
         </div>
       </div>
       <div className="bar-chart-wrapper">
@@ -90,7 +86,7 @@ const AreaBarChart = () => {
           <BarChart
             width={500}
             height={200}
-            data={data}
+            data={transactionsByMonth}
             margin={{
               top: 5,
               right: 5,

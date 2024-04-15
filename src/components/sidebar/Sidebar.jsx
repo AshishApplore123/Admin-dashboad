@@ -138,10 +138,12 @@ const Sidebar = () => {
               </Link>
             </li> */}
             <li className="menu-item" onClick={logout}>
-              <span className="menu-link-icon">
+              <span className="menu-link-icon" style={{ cursor: "pointer" }}>
                 <MdOutlineLogout size={20} />
               </span>
-              <span className="menu-link-text">Logout</span>
+              <span className="menu-link-text" style={{ cursor: "pointer" }}>
+                Logout
+              </span>
             </li>
           </ul>
         </div>

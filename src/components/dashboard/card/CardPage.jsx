@@ -1,37 +1,16 @@
 import React from "react";
-import "./Card.scss"; 
+import "./Card.scss";
 
-const CardPage = ({ heading, amount, value }) => {
+const CardPage = ({ heading, amount, value, totalUsers }) => {
   const isRising = value > 0;
 
   return (
     <div className="cards-container">
       <div className="card">
-        <p className="heading">New User</p>
+        <p className="heading">Total Users</p>
         <div className="amount-value">
-          <p className="amount">1000</p>
-          <p className="value">+15%</p>
-        </div>
-      </div>
-      <div className="card">
-        <p className="heading">New User</p>
-        <div className="amount-value">
-          <p className="amount">1000</p>
-          <p className="value">+15%</p>
-        </div>
-      </div>
-      <div className="card">
-        <p className="heading">New User</p>
-        <div className="amount-value">
-          <p className="amount">1000</p>
-          <p className="value">+15%</p>
-        </div>
-      </div>
-      <div className="card">
-        <p className="heading">New User</p>
-        <div className="amount-value">
-          <p className="amount">1000</p>
-          <p className="value">+15%</p>
+          <p className="amount">{totalUsers}</p>
+          {/* <p className="value">+15%</p> */}
         </div>
       </div>
 

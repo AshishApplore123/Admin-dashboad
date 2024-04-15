@@ -11,10 +11,10 @@ const AreaCardsRevenue = () => {
           title: "Top Earning Payment Method",
           text1: "Credit Card  2000",
           text2: "Debit Card   3200",
-          text3: "Net Banking  2000"
+          text3: "Net Banking  2000",
         }}
       />
-      <AreaCardRevenue
+      {/* <AreaCardRevenue
         colors={["#e4e8ef", "#4ce13f"]}
         percentFillValue={60} // Adjust percent fill value for geographical regions
         cardInfo={{
@@ -33,7 +33,7 @@ const AreaCardsRevenue = () => {
           text2: "Rupee    2000",
           text3: "Euro     2000"
         }}
-      />
+      /> */}
     </section>
   );
 };

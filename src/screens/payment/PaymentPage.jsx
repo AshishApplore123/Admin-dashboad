@@ -31,11 +31,10 @@ const PaymentPage = () => {
 
       const responseData = response?.data;
 
-      if (searchQuery.length !== 0) {
+      if (currentPage === 1) {
         setTableData(responseData);
       } else {
-        const newTableData = [...tableData, ...responseData];
-        setTableData(newTableData);
+        setTableData((prevData) => [...prevData, ...responseData]);
       }
 
       setPaginationInfo({
