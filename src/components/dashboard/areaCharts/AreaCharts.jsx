@@ -7,6 +7,7 @@ const AreaCharts = ({
   totalEarnings,
   fromRevenue,
   transactionsByMonth,
+  totalEarningsByPaymentMethod,
 }) => {
   return (
     <section className="content-area-charts">
@@ -16,7 +17,11 @@ const AreaCharts = ({
         fromRevenue={fromRevenue}
       />
       {!fromRevenue && <AreaProgressChart transactions={transactions} />}
-      {/* {fromRevenue && <AreaCardsRevenue />} */}
+      {fromRevenue && (
+        <AreaCardsRevenue
+          totalEarningsByPaymentMethod={totalEarningsByPaymentMethod}
+        />
+      )}
     </section>
   );
 };

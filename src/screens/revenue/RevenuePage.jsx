@@ -13,6 +13,8 @@ const RevenuePage = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalEarnings, setTotalEarnings] = useState(0);
   const [transactionsByMonth, setTransactionsByMonth] = useState([]);
+  const [totalEarningsByPaymentMethod, setTotalEarningsByPaymentMethod] =
+    useState([]);
 
   const fetchDashboardData = async (startDate, endDate) => {
     const data = await get("/v1/admin/users/dashboard", {
@@ -24,6 +26,7 @@ const RevenuePage = () => {
     setTotalUsers(data?.totalUsers);
     setTotalEarnings(data?.totalEarnings);
     setTransactionsByMonth(data?.transactionsByMonth);
+    setTotalEarningsByPaymentMethod(data?.totalEarningsByPaymentMethod);
   };
 
   useEffect(() => {
@@ -39,6 +42,7 @@ const RevenuePage = () => {
         transactions={transactions}
         totalEarnings={totalEarnings}
         transactionsByMonth={transactionsByMonth}
+        totalEarningsByPaymentMethod={totalEarningsByPaymentMethod}
       />
 
       {/* <AreaCardsRevenue /> */}

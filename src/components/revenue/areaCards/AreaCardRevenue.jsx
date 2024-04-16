@@ -1,23 +1,18 @@
 import PropTypes from "prop-types";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-} from "recharts";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const AreaCardRevenue = ({ colors, percentFillValue, cardInfo }) => {
   const filledValue = (percentFillValue / 100) * 360; // 360 degress for a full circle
   const remainedValue = 360 - filledValue;
 
-  const data = [
-    { name: "Remained", value: remainedValue },
-    { name: "Achieved Sales", value: filledValue },
-  ];
+  // const data = [
+  //   { name: "Remained", value: remainedValue },
+  //   { name: "Achieved Sales", value: filledValue },
+  // ];
 
-  const renderTooltipContent = (value) => {
-    return `${(value / 360) * 100} %`;
-  };
+  // const renderTooltipContent = (value) => {
+  //   return `${(value / 360) * 100} %`;
+  // };
 
   return (
     <div className="area-card">
@@ -29,7 +24,7 @@ const AreaCardRevenue = ({ colors, percentFillValue, cardInfo }) => {
           <p className="info-text">{cardInfo.text3}</p>
         </div>
       </div>
-      <div className="area-card-chart">
+      {/* <div className="area-card-chart">
         <PieChart width={100} height={100}>
           <Pie
             data={data}
@@ -52,7 +47,7 @@ const AreaCardRevenue = ({ colors, percentFillValue, cardInfo }) => {
           </Pie>
           <Tooltip formatter={renderTooltipContent} />
         </PieChart>
-      </div>
+      </div> */}
     </div>
   );
 };
