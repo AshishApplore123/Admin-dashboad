@@ -115,12 +115,14 @@ const PaymentPage = () => {
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
       />
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        totalItems={paginationInfo?.totalPages}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      {currentItems.length ? (
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          totalItems={paginationInfo?.totalPages}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      ) : null}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import Modal from "./Modal";
 
 import "./UserManagement.css";
 import { toast } from "react-toastify";
+import KeyModal from "./KeyModal";
 
 const Popover = ({ onSelectOption, onClose }) => {
   return (
@@ -36,6 +37,8 @@ const UserManagement = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isKeyModalOpen, setIsKeyModalOpen] = useState(false);
+  const [key, setKey] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -60,8 +63,6 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
-  const notify = () => toast("Wow so easy!");
-
   const handleStatusClick = (status) => {
     setSelectedStatus(status);
   };
@@ -80,6 +81,10 @@ const UserManagement = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+  };
+
+  const handleKeyModalClose = () => {
+    setIsKeyModalOpen(false);
   };
 
   const handleInputChange = (event) => {
@@ -103,6 +108,9 @@ const UserManagement = () => {
       setTableData([...tableData, newUser]);
 
       toast.success("Successfully added new user.");
+
+      setKey(newUser.apiKey);
+      setIsKeyModalOpen(true);
 
       // Close the modal
       setIsModalOpen(false);
@@ -157,6 +165,10 @@ const UserManagement = () => {
             handleInputChange={handleInputChange}
             isUpdating={false}
           />
+        )}
+
+        {isKeyModalOpen && (
+          <KeyModal onClose={handleKeyModalClose} data={key} />
         )}
       </div>
 

@@ -25,15 +25,11 @@ const Login = () => {
     if (ENVIRONMENT === "prod") {
       const token = await reCaptchaRef.current.executeAsync();
 
-      console.log(">>>RecaptchaToken", token);
-
       post("v1/admin/auth/login", { email, password, recaptchaToken: token })
         .then((result) => {
-          console.log("result", result);
-          console.log(result);
-
           localStorage.setItem("token", result.data.accessToken);
-          navigate("/payment");
+          localStorage.setItem("role", result.data.user.role);
+          navigate("/dashboard");
           toast.success("Login successful!", { autoClose: 5000 });
 
           reCaptchaRef.current.reset();
@@ -47,11 +43,9 @@ const Login = () => {
     } else {
       post("v1/admin/auth/login", { email, password })
         .then((result) => {
-          console.log("result", result);
-          console.log(result);
-
           localStorage.setItem("token", result.data.accessToken);
-          navigate("/payment");
+          localStorage.setItem("role", result.data.user.role);
+          navigate("/dashboard");
           toast.success("Login successful!", { autoClose: 5000 });
         })
         .catch((err) => {

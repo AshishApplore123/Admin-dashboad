@@ -47,13 +47,15 @@ const Table = ({
                 <td>{dataItem?.name}</td>
                 <td>{dataItem?.createdAt}</td>
                 <td>{dataItem?.email}</td>
-                <td>{dataItem?.phone_no}</td>
+                <td>{dataItem?.phoneNumber}</td>
                 <td>
                   <div className="dt-status">
                     <span
                       className={`dt-status-dot dot-${dataItem?.status}`}
                     ></span>
-                    <span className="dt-status-text">{dataItem?.status}</span>
+                    <span className="dt-status-text">
+                      {dataItem?.status === 1 ? "ACTIVE" : "DISABLED"}
+                    </span>
                   </div>
                 </td>
                 <td className="dt-cell-action">

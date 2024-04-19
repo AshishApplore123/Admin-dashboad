@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { Link } from "react-router-dom";
 
 import { patch } from "../../../config/axios";
 
@@ -16,6 +15,7 @@ const TableAction = ({ currentUser, onUpdateTableData }) => {
   const [formData, setFormData] = useState({
     name: currentUser?.name,
     password: "",
+    phoneNumber: "",
     status: 1,
   });
 
@@ -141,11 +141,6 @@ const TableAction = ({ currentUser, onUpdateTableData }) => {
                 >
                   Enable
                 </button>
-              </li>
-              <li className="dropdown-menu-item">
-                <Link to="/view" className="dropdown-menu-link">
-                  Password Reset
-                </Link>
               </li>
             </ul>
           </div>

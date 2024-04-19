@@ -28,6 +28,7 @@ const Sidebar = () => {
   const { theme } = useContext(ThemeContext);
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
+  const role = localStorage.getItem("role");
 
   const handleClickOutside = (event) => {
     if (
@@ -84,14 +85,16 @@ const Sidebar = () => {
                 <span className="menu-link-text">Revenue</span>
               </Link>
             </li>
-            <li className="menu-item">
-              <Link to="/usermanagement" className="menu-link">
-                <span className="menu-link-icon">
-                  <FaUsers size={20} />
-                </span>
-                <span className="menu-link-text">User Management</span>
-              </Link>
-            </li>
+            {role === "super" ? (
+              <li className="menu-item">
+                <Link to="/usermanagement" className="menu-link">
+                  <span className="menu-link-icon">
+                    <FaUsers size={20} />
+                  </span>
+                  <span className="menu-link-text">User Management</span>
+                </Link>
+              </li>
+            ) : null}
             <li className="menu-item">
               <Link to="/payment" className="menu-link">
                 <span className="menu-link-icon">

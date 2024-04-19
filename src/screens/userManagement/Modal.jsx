@@ -26,22 +26,19 @@ const Modal = ({
             value={formData?.password}
             onChange={handleInputChange}
           />
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={formData?.phoneNumber}
+            onChange={handleInputChange}
+          />
           {!isUpdating && (
             <input
               type="email1"
               name="email"
               placeholder="Email"
               value={formData?.email}
-              onChange={handleInputChange}
-            />
-          )}
-
-          {isUpdating && (
-            <input
-              type="number"
-              name="status"
-              placeholder="Status"
-              value={formData?.status}
               onChange={handleInputChange}
             />
           )}
