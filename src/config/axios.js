@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL;
 
@@ -29,6 +30,10 @@ const handleRequestError = (error) => {
     if (error.response.status === 401 || error.response.status === 404) {
       localStorage.removeItem("token");
       window.location.replace("/login");
+    }
+    if (error.response.status === 422) {
+      const errors = error.response.data.data;
+      Object.keys(errors).map((key) => toast.error(errors[key][0]));
     }
     let err = {
       errorType: "HTTP Error",
@@ -87,6 +92,7 @@ export const patch = async (url, data = {}) => {
     return response.data;
   } catch (error) {
     handleRequestError(error);
+    throw new Error("Request Errro");
   }
 };
 // DELETE request function
