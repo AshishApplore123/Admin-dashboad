@@ -27,7 +27,7 @@ const Modal = ({
             onChange={handleInputChange}
           />
           <input
-            type="text"
+            type="name"
             name="phoneNumber"
             placeholder="Phone Number"
             value={formData?.phoneNumber}
